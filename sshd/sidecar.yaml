@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: no-ip-tables
+  namespace: default
+spec:
+  workloadSelector:
+    labels:
+      app: sshd-pod
+  egress:
+  - port:
+      number: 8888
+      protocol: TCP
+      name: egress
+    captureMode: NONE # not needed if metadata is set for entire proxy
+    bind: 127.0.0.1
+    hosts:
+    - "*/mysql.foo.com"

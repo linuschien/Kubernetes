@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: external-http
+spec:
+  hosts:
+  - mysql.foo.com
+#  addresses:
+#  - 127.0.0.1/32 # VIPs
+  ports:
+  - number: 8888
+    name: https
+    protocol: TCP
+  location: MESH_EXTERNAL
+  resolution: DNS
+  endpoints:
+  - address: www.google.com
+    ports: 
+      https: 443

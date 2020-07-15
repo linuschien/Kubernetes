@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sshd-pod
+  labels:
+    app: sshd-pod
+spec:
+  containers:
+    - name: sshd
+      image: 10.206.79.138/linus:sshd
+      ports:
+        - containerPort: 22
